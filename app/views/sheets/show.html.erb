@@ -1,0 +1,16 @@
+<p>
+  <strong>Name:</strong>
+  <%= @sheet.name %>
+</p>
+
+<h2>Statistics</h2>
+<h3>Add statistic:</h3>
+<%= render 'statistics/form' %>
+
+<ul>
+  <% @sheet.statistics.each do |statistic| %>
+    <li><%= statistic.name %></li>
+  <% end %>
+</ul> 
+
+<%= link_to 'Back', sheets_path %>

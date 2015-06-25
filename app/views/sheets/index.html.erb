@@ -1,0 +1,14 @@
+<h1>Listing sheets</h1>
+
+<%= link_to 'New sheet', new_sheet_path %>
+
+<ul>
+  <% @sheets.each do |sheet| %>
+  <li>
+    <ul>
+      <li><%= sheet.name %></li>
+      <li><%= link_to 'Show', sheet_path(sheet) %></li>
+      <li><%= link_to 'Edit', edit_sheet_path(sheet) %></li>
+  </li>
+  <% end %>
+</ul>
