@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150625223722) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attributes", force: :cascade do |t|
     t.string   "name"
     t.integer  "sheet_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150625223722) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "attributes", ["sheet_id"], name: "index_attributes_on_sheet_id"
+  add_index "attributes", ["sheet_id"], name: "index_attributes_on_sheet_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "name"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150625223722) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "features", ["sheet_id"], name: "index_features_on_sheet_id"
+  add_index "features", ["sheet_id"], name: "index_features_on_sheet_id", using: :btree
 
   create_table "sheets", force: :cascade do |t|
     t.string   "name"
@@ -44,6 +47,9 @@ ActiveRecord::Schema.define(version: 20150625223722) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "statistics", ["sheet_id"], name: "index_statistics_on_sheet_id"
+  add_index "statistics", ["sheet_id"], name: "index_statistics_on_sheet_id", using: :btree
 
+  add_foreign_key "attributes", "sheets"
+  add_foreign_key "features", "sheets"
+  add_foreign_key "statistics", "sheets"
 end
