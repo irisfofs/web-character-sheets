@@ -1,33 +1,25 @@
+<base href="/" />
 <header class="row">
   <h1 class="text-center">Character Name</h1>
 </header>
 <section class="row">
   <form>
     <div class="form-group">
-      <label for="keywords" class="sr-only">Statistic Name</label>
-      <input ng-model="keywords" name="keywords" type="text" autofocus class="form-control" placeholder="Statistic name, e.g. Strength, HP, Initiative">
+      <label for="keywords" class="sr-only">Character Index</label>
+      <input ng-model="keywords" name="keywords" type="text" autofocus class="form-control" placeholder="Character name">
     </div>
     <div class="form-group col-md-6 col-md-offset-3 text-center">
-      <button ng-click="addStatistic(keywords)" class="btn btn-primary btn-lg">Add Statistic</button>
+      <button ng-click="search(keywords)" class="btn btn-primary btn-lg">Search</button>
     </div>
   </form>
 </section>
 <hr>
-<section class="row" ng-if="statistics" ng-controller="StatisticController">
-  <h1 class="text-center h2">Statistics</h1>
+<section class="row" ng-if="characters">
+  <h1 class="text-center h2">Characters</h1>
   <ul class="list-unstyled">
-    <li ng-repeat="(key, value) in statistics">
+    <li ng-repeat="character in characters">
       <section class="well col-md-6 col-md-offset-3">
-        <h1 class="h3 col-md-6" style="margin-top: 0"><a href="#">{{key}}</a></h1>
-        <div class="form-group">
-          <label>Base value:</label>
-          <input ng-model="value.base_value" name="{{value.name}}-base-value" type="number" class="form-control">
-          <label>Expression:</label>
-          <input ng-model="value.expression" name="{{value.name}}-expression" type="text" class="form-control">
-          {{statistics[key]}}
-        </div>
-        <p>Output:</p>
-        <div ng-bind="compute(key)" class="output"></div>
+        <h1 class="h3 col-md-6" style="margin-top: 0"><a href="#">{{character.name}}</a></h1>
         <div class="col-md-6">
 <!--           <button class="btn btn-info">Edit</button> -->
           <button class="btn btn-danger">Delete</button>

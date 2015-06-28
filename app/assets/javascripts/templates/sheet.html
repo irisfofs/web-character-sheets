@@ -1,0 +1,38 @@
+<header class="row">
+  <h1 class="text-center">Character Name</h1>
+</header>
+<section class="row">
+  <form>
+    <div class="form-group">
+      <label for="keywords" class="sr-only">Statistic Name</label>
+      <input ng-model="keywords" name="keywords" type="text" autofocus class="form-control" placeholder="Statistic name, e.g. Strength, HP, Initiative">
+    </div>
+    <div class="form-group col-md-6 col-md-offset-3 text-center">
+      <button ng-click="addStatistic(keywords)" class="btn btn-primary btn-lg">Add Statistic</button>
+    </div>
+  </form>
+</section>
+<hr>
+<section class="row" ng-if="statistics">
+  <h1 class="text-center h2">Statistics</h1>
+  <ul class="list-unstyled">
+    <li ng-repeat="(key, value) in statistics">
+      <section class="well col-md-6 col-md-offset-3">
+        <h1 class="h3 col-md-6" style="margin-top: 0"><a href="#">{{key}}</a></h1>
+        <div class="form-group">
+          <label>Base value:</label>
+          <input ng-model="value.base_value" name="{{value.name}}-base-value" type="number" class="form-control">
+          <label>Expression:</label>
+          <input ng-model="value.expression" name="{{value.name}}-expression" type="text" class="form-control">
+          {{statistics[key]}}
+        </div>
+        <p>Output:</p>
+        <div ng-bind="compute(key)" class="output"></div>
+        <div class="col-md-6">
+<!--           <button class="btn btn-info">Edit</button> -->
+          <button class="btn btn-danger">Delete</button>
+        </div>
+      </section>
+    </li>
+  </ul>
+</section>

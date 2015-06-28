@@ -8,19 +8,6 @@ statistics = {
 
 controllers = angular.module('controllers')
 
-controllers.controller("IndexController", [ "$scope", "$routeParams", "$location",
-  ($scope, $routeParams, $location)->
-    $scope.addStatistic = (keywords)->  $location.path("/").search('keywords',keywords)
-
-    $scope.statistics = statistics
-    if $routeParams.keywords
-      keywords = $routeParams.keywords
-      $scope.statistics[keywords] = {
-          base_value: 1
-          expression: ""
-        }
-])
-
 controllers.controller("StatisticController", [ "$scope", "$parse",
   ($scope, $parse)->
     $scope.statistics = statistics
