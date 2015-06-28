@@ -1,7 +1,11 @@
 class SheetsController < ApplicationController
 
   def index
-    @sheets = Sheet.all
+    @sheets = if params[:keywords]
+                Sheet.where("name ilike ?", "%#{params[:keywords]}%")
+              else
+                []
+              end
   end
 
   def show
@@ -24,6 +28,13 @@ class SheetsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  # TODO: Define in terms of create, or vice versa
+  def create!(name:)
+    @sheet = Sheet.new(name)
+
+    @sheet.save
   end
 
   def update
