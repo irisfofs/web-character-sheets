@@ -8,8 +8,9 @@ statistics = {
 
 controllers = angular.module('controllers')
 
-controllers.controller("StatisticController", [ "$scope", "$parse",
-  ($scope, $parse)->
+controllers.controller("SheetController", [ "$scope", "$routeParams", "$parse", "$resource",
+  ($scope, $routeParams, $parse, $resource)->
+    Sheet = $resource('/sheets/:sheetId', { sheetId: "@id", format: 'json' })
     $scope.statistics = statistics
 
     process = (expr)->

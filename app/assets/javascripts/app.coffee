@@ -14,7 +14,7 @@ app.config([ "$routeProvider",
       )
       .when("/sheets/:sheetId",
         templateUrl: "sheet.html"
-        controller: "StatisticsController"
+        controller: "SheetController"
       )
       .otherwise(
         redirectTo: "/sheets/"
