@@ -11,7 +11,13 @@ controllers = angular.module('controllers')
 controllers.controller("SheetController", [ "$scope", "$routeParams", "$parse", "$resource",
   ($scope, $routeParams, $parse, $resource)->
     Sheet = $resource('/sheets/:sheetId', { sheetId: "@id", format: 'json' })
+
     $scope.statistics = statistics
+
+    if $routeParams.sheetId
+      Sheet.get({ sheetId: $routeParams.sheetId },
+        ( (sheet)-> $scope.character = sheet )
+      )
 
     process = (expr)->
       expr.replace(/[a-zA-Z]+/g, (ref)-> 'compute("' + ref + '")')

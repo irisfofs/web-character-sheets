@@ -12,7 +12,8 @@ controllers.controller("IndexController", [ "$scope", "$routeParams", "$location
     )
 
     $scope.createCharacter = (character_name)-> 
-      Sheet.create({ name: character_name })
+      Sheet.create({ name: character_name }, 
+        ( (newSheet)-> $location.path("/sheets/#{newSheet.id}") ))
 
 
     if $routeParams.keywords
