@@ -1,4 +1,3 @@
-<base href="/" />
 <header class="row">
   <h1 class="text-center">Character Name</h1>
 </header>
@@ -12,6 +11,11 @@
       <button ng-click="search(keywords)" class="btn btn-primary btn-lg">Search</button>
     </div>
   </form>
+  <div class="form-group">
+    <label for="character-name" class="sr-only">New Character Name</label>
+    <input type="text" ng-model="character_name" name="character-name" class="form-control" placeholder="New character name">
+    <button ng-click="createCharacter(character_name)" class="btn btn-primary btn-lg">New Character</button>
+  </div>
 </section>
 <hr>
 <section class="row" ng-if="characters">
