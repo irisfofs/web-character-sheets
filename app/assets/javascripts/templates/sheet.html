@@ -14,10 +14,10 @@
   </form>
 </section>
 <hr>
-<section class="row" ng-if="statistics">
+<section class="row" ng-if="character.statistics">
   <h1 class="text-center h2">Statistics</h1>
   <ul class="list-unstyled">
-    <li ng-repeat="(key, value) in statistics">
+    <li ng-repeat="(key, value) in character.statistics">
       <section class="well col-md-6 col-md-offset-3">
         <h1 class="h3 col-md-6" style="margin-top: 0"><a href="#">{{key}}</a></h1>
         <div class="form-group">
@@ -25,7 +25,7 @@
           <input ng-model="value.base_value" name="{{value.name}}-base-value" type="number" class="form-control">
           <label>Expression:</label>
           <input ng-model="value.expression" name="{{value.name}}-expression" type="text" class="form-control">
-          {{statistics[key]}}
+          {{character.statistics[key]}}
         </div>
         <p>Output:</p>
         <div ng-bind="compute(key)" class="output"></div>

@@ -1,1 +1,1 @@
-json.(sheet, :name, :id)
+json.(sheet, :name, :id, :statistics)

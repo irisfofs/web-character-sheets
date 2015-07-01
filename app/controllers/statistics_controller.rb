@@ -1,4 +1,6 @@
 class StatisticsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def create
     @sheet = Sheet.find(params[:sheet_id])
     @statistic = @sheet.statistics.create(statistic_params)
