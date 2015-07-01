@@ -17,18 +17,18 @@
 <section class="row" ng-if="character.statistics">
   <h1 class="text-center h2">Statistics</h1>
   <ul class="list-unstyled">
-    <li ng-repeat="(key, value) in character.statistics">
+    <li ng-repeat="(name, statistic) in character.statistics" ng-controller="StatisticController">
       <section class="well col-md-6 col-md-offset-3">
-        <h1 class="h3 col-md-6" style="margin-top: 0"><a href="#">{{key}}</a></h1>
-        <div class="form-group">
+        <h1 class="h3 col-md-6" style="margin-top: 0"><a href="#">{{name}}</a></h1>
+        <form name="statistic_{{name}}_form" class="form-group">
           <label>Base value:</label>
-          <input ng-model="value.base_value" name="{{value.name}}-base-value" type="number" class="form-control">
+          <input ng-model="statistic.base_value" name="{{statistic.name}}-base-value" type="number" class="form-control" required>
           <label>Expression:</label>
-          <input ng-model="value.expression" name="{{value.name}}-expression" type="text" class="form-control">
-          {{character.statistics[key]}}
-        </div>
+          <input ng-model="statistic.expression" name="{{statistic.name}}-expression" type="text" class="form-control" required>
+          {{character.statistics[name]}}
+        </form>
         <p>Output:</p>
-        <div ng-bind="compute(key)" class="output"></div>
+        <div ng-bind="compute(name)" class="output"></div>
         <div class="col-md-6">
 <!--           <button class="btn btn-info">Edit</button> -->
           <button class="btn btn-danger">Delete</button>

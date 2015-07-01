@@ -1,15 +1,7 @@
-
-statistics = {
-  Level: { base_value: 1, expression: "" }
-  Strength: { base_value: 10, expression: "" }
-  Dexterity: { base_value: 10, expression: "" }
-  Initiative: { base_value: 0, expression: "" }
-}
-
 controllers = angular.module('controllers')
 
-controllers.controller("SheetController", [ "$scope", "$routeParams", "$parse", "$resource",
-  ($scope, $routeParams, $parse, $resource)->
+controllers.controller("SheetController", [ "$scope", "$routeParams", "$parse", "$resource", "$timeout",
+  ($scope, $routeParams, $parse, $resource, $timeout)->
     Sheet = $resource('/sheets/:sheetId', { sheetId: "@id", format: 'json' },
       {
         'save':   {method:'PUT'},
@@ -40,7 +32,6 @@ controllers.controller("SheetController", [ "$scope", "$routeParams", "$parse", 
       expr.replace(/[a-zA-Z]+/g, (ref)-> 'compute("' + ref + '")')
 
     $scope.compute = (name)->
-      console.log($scope.character.statistics)
       stat = $scope.character.statistics[name]
       parsed_mod = $parse(process($scope.character.statistics[name].expression))($scope)
       if parsed_mod == undefined
