@@ -16,3 +16,12 @@
 
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap";
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+}

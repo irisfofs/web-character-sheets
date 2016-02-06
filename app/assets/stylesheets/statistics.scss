@@ -1,3 +1,36 @@
 // Place all the styles related to the Statistics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+li.statistic {
+  h3, input, form, p { display: inline-block; }
+
+  h3 {
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  form { margin-bottom: 0 }
+
+  .wcs-base { width: 4em; }
+  .wcs-expr { width: 30em; }
+
+  .label-box {
+    display: inline-block;
+    // overflow: hidden;
+
+    input {
+      width: 100%;
+    }
+
+    label {
+      top: -3em;
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: .75em;
+      width: 100%;
+      word-wrap: auto;
+      text-align: center;
+    }
+  }
+}
